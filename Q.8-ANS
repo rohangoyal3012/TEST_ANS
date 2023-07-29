@@ -1,0 +1,25 @@
+Q8. In what order will the numbers 1-4 be logged to the console when the code below is executed? Why?
+
+(function() {
+
+    console.log(1); 
+
+    setTimeout(function(){console.log(2)}, 1000); 
+
+    setTimeout(function(){console.log(3)}, 0); 
+
+    console.log(4);
+
+})();
+ANS:
+The numbers 1, 4, 3, and 2 will be logged to the console in the following order:
+
+1.The first console.log(1); statement is executed immediately, so it logs 1 to the console.
+
+2.The setTimeout function with a delay of 1000 milliseconds (1 second) is executed, but it schedules the execution of console.log(2) after 1000 milliseconds. So, there will be a delay of approximately 1 second before 2 is logged to the console.
+
+3.The setTimeout function with a delay of 0 milliseconds is executed, but even though the delay is set to 0, JavaScript will still queue the function to be executed after the current script block finishes executing. Since the current script block is executing the immediately invoked function expression (IIFE), the console.log(4) statement will be executed before console.log(3).
+
+4.Finally, console.log(4) logs 4 to the console.
+
+So, the order of the numbers logged will be 1, 4, 3, and 2
